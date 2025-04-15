@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: 1px solid #ddd;
+            margin: 0 auto;
+            background-color: #fcebca;
+        }
+
+        th, td{
+            padding: 8px;
+        }
+    </style>
+    <script src="Jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var gbd = parseFloat($("#inputGbd").val());
+                var gkt = parseFloat($("#inputGkt").val());
+
+                if (gbd<10 || gbd>24) {
+                    alert("Nhận sai giờ hoặc giờ đó đã nghỉ vui lòng nhập lại!");
+                    return;
+                }
+                if(gkt <17){
+                    var ttt = (gkt - gbd) * 20000;
+                    $("#outputTtt").val(ttt).css("background-color", "#f9cccc");
+                } else {
+                    var ttt = (gkt - gbd) * 45000;
+                    $("#outputTtt").val(ttt).css("background-color", "#f9cccc");
+                }
+                if(gbd<17 && gkt>=17){
+                    var ttt = ((17 - gbd) *20000 + (gkt - 17) *45000);
+                    $("#outputTtt").val(ttt).css("background-color", "#f9cccc");
+                }
+            })
+        })
+
+    </script>
+    
+</head>
+<body>
+    <table>
+        <tr style="color: #a55715; background-color: #f8cc69;">
+            <th colspan="2">TÍNH TIỀN KARAOKE</th>
+        </tr>
+        <tr>
+            <td>Giờ bắt đầu: </td>
+            <td><input type="text" id="inputGbd">(h)</td>
+        </tr>
+        <tr>
+            <td>Giờ kết thúc: </td>
+            <td><input type="text" id="inputGkt">(h)</td>
+        </tr>
+        <tr>
+            <td>Tiền thanh toán: </td>
+            <td><input type="text" id="outputTtt" readonly>(Vnd)</td>
+        </tr>
+        <tr><td style="text-align: center;" colspan="2"><button id="btn">Tính tiền</button></td></tr>
+        
+    </table>
+</body>
+</html>

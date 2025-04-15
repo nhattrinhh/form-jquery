@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="Jquery.js"></script>
+    <script>
+        $(document).ready
+    </script>
+    <style>
+        table{
+            background-color: #FACE91;
+            margin: 0 auto;
+        }
+        td{
+            padding: 8px;
+            border: 1px solid #2F2079;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Lương: </td>
+            <td><input id="inputLuong" type="text"></td>
+        </tr>
+        <tr>
+            <td>Hệ số lương</td>
+            <td>
+                <select name="" id="heSoLuong">
+                    <option value="2.34">2.34</option>
+                    <option value="2.67">2.67</option>
+                    <option value="3.0">3.0</option>
+                    <option value="3.2">3.2</option>
+                    <option value="3.6">3.6</option>
+                    <option value="3.99">3.99</option>
+                    <option value="4.32">4.32</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;"><button id="btn">Tính lương tháng</button></td>
+        </tr>
+        <tr>
+            <td>Lương tháng</td>
+            <td id="outputResult"></td>
+        </tr>
+    </table>
+</body>
+</html>

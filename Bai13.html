@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Mua vé xem phim</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f0f4f8;
+    }
+    .container {
+      width: 320px;
+      margin: 50px auto;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #333;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Mua vé</h2>
+  <form id="ticketForm">
+    <label for="date">Ngày:</label>
+    <input type="text" id="date" placeholder="dd/mm/yyyy">
+
+    <label for="movie">Phim:</label>
+    <select id="movie">
+      <option value="">Chọn phim</option>
+      <option value="Phim 1">Phim 1</option>
+      <option value="Phim 2">Phim 2</option>
+    </select>
+
+    <label for="showtime">Suất chiếu:</label>
+    <select id="showtime">
+      <option value="">Chọn suất chiếu</option>
+      <option value="50000">10:00 (50k)</option>
+      <option value="70000">14:00 (70k)</option>
+    </select>
+
+    <label for="room">Phòng chiếu:</label>
+    <select id="room">
+      <option value="">Chọn phòng chiếu</option>
+      <option value="1.2">Phòng 1 (1.2x giá)</option>
+      <option value="1.5">Phòng 2 (1.5x giá)</option>
+    </select>
+
+    <label for="seat">Ghế ngồi:</label>
+    <select id="seat" multiple>
+      <option value="Ghế 01">Ghế 01</option>
+      <option value="Ghế 02">Ghế 02</option>
+      <option value="Ghế 03">Ghế 03</option>
+    </select>
+
+    <button type="button" id="buyTicket">Mua vé</button>
+  </form>
+</div>
+
+<script>
+  function isValidDate(dateString) {
+    const regex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+    if (!regex.test(dateString)) return false;
+    const [_, d, m, y] = dateString.match(regex);
+    const date = new Date(`${y}-${m}-${d}`);
+    return (date.getDate() == d && (date.getMonth()+1) == m && date.getFullYear() == y);
+  }
+
+  function formatCurrency(number) {
+    return number.toLocaleString('vi-VN') + " VND";
+  }
+
+  $(document).ready(function() {
+    $("#buyTicket").click(function() {
+      let date = $("#date").val().trim();
+      let movie = $("#movie").val();
+      let showtime = $("#showtime").val();
+      let room = $("#room").val();
+      let seats = $("#seat").val();
+
+      if (!date || !movie || !showtime || !room || !seats || seats.length === 0) {
+        alert("Vui lòng điền đầy đủ thông tin!");
+        return;
+      }
+
+      if (!isValidDate(date)) {
+        alert("Ngày không hợp lệ. Vui lòng nhập đúng định dạng dd/mm/yyyy");
+        return;
+      }
+
+      let price = parseInt(showtime) * parseFloat(room) * seats.length;
+      let seatList = seats.join(", ");
+      let ticketInfo = `Ngày: ${date}\nPhim: ${movie}\nSuất chiếu: ${showtime}\nPhòng: ${room}\nGhế: ${seatList}\nTổng giá: ${formatCurrency(price)}`;
+      
+      alert("Thông tin vé:\n" + ticketInfo);
+      $("#ticketForm")[0].reset();
+    });
+  });
+</script>
+
+</body>
+</html>

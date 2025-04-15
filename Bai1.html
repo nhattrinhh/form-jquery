@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btnRectangleArea").click(function(){
+                var length = parseFloat($("#inputLength").val());
+                var width = parseFloat($("#inputWidth").val());
+                var area = length * width;
+                $("#outputArea").val(area);
+                $("#outputArea").css("background-color", "#ddd");
+            })
+        })
+    </script>
+
+    <style>
+        table{
+            background-color: #fcebca;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            
+            
+        }
+        th, td{
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr><th colspan="2" style="background-color: #f8cc69; color: #a55715;">DIEN TICH HINH CHU NHAT</th></tr>
+        <tr>
+            <td>Chiều dài</td>
+            <td><input id="inputLength" type="text"></td>
+        </tr>
+        <tr>
+            <td>Chiều rộng</td>
+            <td><input id="inputWidth" type="text"></td>
+        </tr>
+        <tr>
+            <td>Diện tích</td>
+            <td><input id="outputArea" type="text" readonly></td>
+        </tr>
+        <tr><td colspan="2" style=" text-align: center;"><button style="padding: 4px 10px;" id="btnRectangleArea">Tính</button></td></tr>
+    </table>
+</body>
+</html>

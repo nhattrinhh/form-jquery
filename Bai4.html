@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var hk2 = parseFloat($("#inputHk2").val());
+                var hk1 = parseFloat($("#inputHk1").val());
+                if (hk1 <0 || hk1 > 10){
+                    alert("Nhập điểm lỗi");
+                }
+                if (hk2 <0 || hk2 > 10){
+                    alert("Nhập điểm lỗi")
+                }
+                var dtb = (hk1 + hk2) / 2;
+                $("#outputDtb").val(dtb);
+                if(dtb>5) $("#outputKqua").val("Pass");
+                else $("#outputKqua").val("Trượt");
+
+                if(dtb > 5 && dtb< 6.5 ){
+                    $("#outputHluc").val("Trung bình");
+                } else if(dtb >= 6.5 && dtb <=8.5){
+                    $("#outputHluc").val("Khá");
+                } else if(dtb<=10 && dtb >=8.5){
+                    $("#outputHluc").val("Giỏi");
+                } else if(dtb >= 0 && dtb < 5) {
+                    $("#outputHluc").val("Yếu");
+                }
+            })
+        })
+    </script>
+    <style>
+        table{
+            background-color: #fcecba;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            border-radius: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        th, td{
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th colspan="2">KẾT QUẢ HỌC TẬP</th>
+        </tr>
+        <tr>
+            <td>Điểm HK1;</td>
+            <td><input type="text" id="inputHk1"></td>
+        </tr>
+        <tr>
+            <td>Điểm HK2;</td>
+            <td><input type="text" id="inputHk2"></td>
+        </tr>
+        <tr>
+            <td>Điểm trung bình:</td>
+            <td><input type="text" id="outputDtb" readonly></td>
+        </tr>
+        <tr>
+            <td>Kết quả:</td>
+            <td><input type="text" id="outputKqua" readonly></td>
+        </tr>
+        <tr>
+            <td>Xếp loại học lực:</td>
+            <td><input type="text" id="outputHluc" readonly></td>
+        </tr>
+        <tr><td colspan="2" style="text-align: center;"><button id="btn">Xem kết quả</button></td></tr>
+    </table>
+</body>
+</html>

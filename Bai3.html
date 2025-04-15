@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btnTinh").click(function(){
+                var cscu = $("#inputCscu").val();
+                var csmoi = $("#inputCsmoi").val();
+                var dgia = $("#inputDgia").val();
+                var price = (csmoi - cscu) * dgia;
+                $("#outputPrice").val(price).css("background-color", "#f9cccc");
+            })
+        })
+    </script>
+    <style>
+        table{
+            margin: 0 auto;
+            background-color: #fcebca;
+
+        }
+
+        th, td{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr style="color: #a55715; background-color: #f8cc69;">
+                <th colspan="2">THANH TOÁN TIỀN ĐIỆN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tên chủ hộ: </td>
+                <td><input type="text" value="Glowryzz"></td>
+            </tr>
+            <tr>
+                <td>Chỉ số cũ: </td>
+                <td><input type="text" id="inputCscu">(Kw)</td>
+            </tr>
+            <tr>
+                <td>Chỉ số mới: </td>
+                <td><input type="text" id="inputCsmoi">(Kw)</td>
+            </tr>
+            <tr>
+                <td>Đơn giá: </td>
+                <td><input type="text" id="inputDgia">(VND)</td>
+            </tr>
+            <tr>
+                <td>Số tiền thanh toán: </td>
+                <td><input style="background-color: #ddd;" type="text" id="outputPrice" readonly>(VND)</td>
+            </tr>
+            <tr style="text-align: center;"><td colspan="2"><button id="btnTinh">Tính</button></td></tr>
+        </tbody>
+    </table>
+</body>
+</html>

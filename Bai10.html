@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 10</title>
+    <script src="Jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var side1 = parseFloat($("#inputSide1").val());
+                var side2 = parseFloat($("#inputSide2").val());
+                var side3 = parseFloat($("#inputSide3").val());
+                // kiểm tra có phải là tam giác không:
+                if(side1 + side2 <= side3 || side1 + side3 <= side2 || side2 + side3 <= side1){
+                    $("#outputResult").val("Không phải tam giác").css("background-color", "#f9cccc");
+                    return;
+                }
+
+                //tam giác đều
+                if (side1 == side2 && side1 == side3){
+                    $("#outputResult").val("Tam giác đều").css("background-color", "#f9cccc");
+                    return; 
+                }
+                //tam giác vuông
+                let sides = [side1, side2, side3].sort(function(a, b){a - b});//cho vào mảng và sắp sếp
+                if(sides[0] * sides[0] + sides[1] * sides[1] - sides[2] * sides[2] == 0){
+                    $("#outputResult").val("Tam giác vuông").css("background-color", "#f9cccc");
+                    return;
+                };
+                //tam giác cân:
+                if (side1 == side2 || side1 == side3 || side2 == side3){
+                    $("#outputResult").val("Tam giác cân").css("background-color", "#f9cccc");
+                    return;
+                };
+                //tam giác thường
+                $("#outputResult").val("Tam giác thường").css("background-color", "#f9cccc");
+
+            });
+        });
+    </script>
+    <style>
+        table{
+            margin: 0 auto;
+            background-color: #fcebca;
+        }
+        th, td{
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr style="background-color: #f8cc69; color: #8D4A00;">
+            <th colspan="2">NHẬN DẠNG TAM GIÁC</th>
+        </tr>
+        <tr>
+            <td>Cạnh 1: </td>
+            <td><input type="text" id="inputSide1">(cm)</td>
+        </tr>
+        <tr>
+            <td>Cạnh 2: </td>
+            <td><input type="text" id="inputSide2">(cm)</td>
+        </tr>
+        <tr>
+            <td>Cạnh 3: </td>
+            <td><input type="text" id="inputSide3">(cm)</td>
+        </tr>
+        <tr>
+            <td>Kết quả: </td>
+            <td><input type="text" id="outputResult" readonly></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;"><button id="btn">Nhận dạng</button></td>
+        </tr>
+    </table>
+</body>
+</html>

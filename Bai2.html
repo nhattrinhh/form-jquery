@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="Jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var bk = $("#inputBkinh").val();
+                var cv = bk * 3.14;
+                var area = bk * bk;
+                $("#outputCvi").val(cv).css("background-color", "#f9cccc");
+                $("#outputArea").val(area).css("background-color", "#f9cccc");
+            })
+        })
+    </script>
+    <style>
+        table{
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            
+            background-color: #fcebca;
+        }
+        th, td{
+            padding: 10px;
+        }
+        .color-input{
+            background-color: #f9cccc;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr style="background-color: #f8cc69; color: #a55715;">
+                <th colspan="2">DIỆN TÍCH VÀ CHU VI HÌNH TRÒN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Bán kính: </td>
+                <td><input type="text" id="inputBkinh"></td>
+            </tr>
+            <tr>
+                <td>Chu vi:</td>
+                <td><input type="text" id="outputCvi"  readonly></td>
+            </tr>
+            <tr>
+                <td>Diện tích</td>
+                <td><input type="text" id="outputArea" readonly></td>
+            </tr>
+            <tr><td colspan="2" style="text-align: center;"><button id="btn">Tính</button></td></tr>
+        </tbody>
+    </table>
+</body>
+</html>
