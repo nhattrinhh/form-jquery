@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="module" src="Jquery.js"></script>
-    <script>
-        $(document).ready
-    </script>
+    <script src="Jquery.js"></script>
+    
     <style>
         table{
             background-color: #FACE91;
@@ -47,5 +45,19 @@
             <td id="outputResult"></td>
         </tr>
     </table>
+    <script>
+        function formatCurrency(number) {
+            return number.toLocaleString('vi-VN') + " VND";
+        }
+
+        $(document).ready(function(){
+            $("#btn").click(function(){
+                var luong = parseFloat($("#inputLuong").val());
+                var heSo = parseFloat($("#heSoLuong").val());
+                var luongThang = formatCurrency(luong * heSo);
+                $("#outputResult").text(luongThang);
+            });
+        });
+    </script>
 </body>
 </html>
